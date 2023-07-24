@@ -27,19 +27,30 @@ function playRound(playerSelection, computerSelection) {
     playerSelection = playerSelection.toUpperCase();
 
     if(playerSelection === computerSelection){
-        console.log(computerSelection);
         return "Tie";
     } else if
     (  playerSelection === "ROCK" && computerSelection === "SCISSORS" 
     || playerSelection === "PAPER" && computerSelection === "ROCK"
     || playerSelection === "SCISSORS" && computerSelection === "PAPER") {
-        return "Player wins!";
+        return "Player";
     }else {
-        console.log(computerSelection);
-        return "Computer wins!"
+        return "Computer";
     }
 }
 
-const playerSelection = "rock";
-const computerSelection = getComputerChoice();
-console.log(playRound(playerSelection, computerSelection));
+function game() {
+    let computer, player;
+    computer = player = 0;
+
+    while (player < 5 && computer < 5) {
+        let choice = prompt("Rock, Scissors or Paper?");
+        let winner = playRound(choice, getComputerChoice());
+        console.log(winner);
+
+        if (winner != "Tie") winner === "Player" ? player++ : computer++;
+    }
+
+    console.log("Computer: " + computer + " You: " + player);
+    if(player > computer) alert("You Won!");
+    else alert("Computer Won! You Losed!");
+}
