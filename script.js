@@ -22,3 +22,24 @@ function getComputerChoice() {
         break;
     }
 }
+
+function playRound(playerSelection, computerSelection) {
+    playerSelection = playerSelection.toUpperCase();
+
+    if(playerSelection === computerSelection){
+        console.log(computerSelection);
+        return "Tie";
+    } else if
+    (  playerSelection === "ROCK" && computerSelection === "SCISSORS" 
+    || playerSelection === "PAPER" && computerSelection === "ROCK"
+    || playerSelection === "SCISSORS" && computerSelection === "PAPER") {
+        return "Player wins!";
+    }else {
+        console.log(computerSelection);
+        return "Computer wins!"
+    }
+}
+
+const playerSelection = "rock";
+const computerSelection = getComputerChoice();
+console.log(playRound(playerSelection, computerSelection));
