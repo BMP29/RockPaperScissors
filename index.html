@@ -5,10 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="./script.js"></script>
+    <link rel="stylesheet" href="./style.css">
 </head>
 <body>
 
-    <button onclick="game()">Play</button>
+    <div class="header">
+        <h1>Rock Paper Scissors</h1>
+    </div>
+
+    <div class="content">
+        <h2>Choose a tool</h2>
+
+        <ul>
+            <li>
+                <p>Player: </p>
+                <p id="playerScore"></p>
+            </li>
+            
+            <li>
+                <p>Computer: </p>
+                <p id="computerScore"></p>
+            </li>
+        </ul>
+
+        <div class="choices">
+            <button onclick="game('ROCK')">✊</button>
+            <button onclick="game('Paper')">🤚</button>
+            <button onclick="game('Scissors')">✌️</button>
+        </div>
+
+        <p id="winner"></p>
+    </div>
     
 </body>
 </html>

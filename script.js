@@ -1,3 +1,9 @@
+let computerCount, playerCount;
+computerCount = playerCount = 0;
+
+let computerScore, playerScore;
+computerScore = playerScore = 0;
+
 function getComputerChoice() {
     let min = 1;
     let max = 4;
@@ -38,19 +44,31 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-function game() {
-    let computer, player;
-    computer = player = 0;
+function game(choice) {
+    let winner = playRound(choice, getComputerChoice());
+    console.log(winner);
 
-    while (player < 5 && computer < 5) {
-        let choice = prompt("Rock, Scissors or Paper?");
-        let winner = playRound(choice, getComputerChoice());
-        console.log(winner);
+    if (winner != "Tie") winner === "Player" ? playerCount++ : computerCount++;
 
-        if (winner != "Tie") winner === "Player" ? player++ : computer++;
+    if(winner === "Player") {
+        document.getElementById("winner").innerHTML = "You Won the round!";
+    } else if(winner === "Computer") {
+        document.getElementById("winner").innerHTML = "Computer Won the round!";
     }
 
-    console.log("Computer: " + computer + " You: " + player);
-    if(player > computer) alert("You Won!");
-    else alert("Computer Won! You Losed!");
+
+    console.log("Computer: " + computerCount + " You: " + playerCount);
+
+    if(playerCount === 5) 
+    {
+        alert("You Won!");
+        computerCount = playerCount = 0;
+        playerScore++;
+        document.getElementById("playerScore").innerHTML = playerScore.toString();
+    }else if (computerCount === 5){
+        alert("Computer Won! You Losed!");
+        computerCount = playerCount = 0;
+        computerScore++;
+        document.getElementById("computerScore").innerHTML = computerScore.toString();
+    } 
 }
