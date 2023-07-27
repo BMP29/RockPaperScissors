@@ -1,6 +1,6 @@
 body {
     margin: 0;
-    font-family: "Roboto";
+    font-family: "Retro Gaming";
     background-color: #000818;
 }
 .header {
@@ -25,10 +25,19 @@ h1, h2 {
 h2 {
     margin: 20px;
     font-size: 50px;
-    color: white;
 }
 
 p {
+    font-size: 20px;
+    margin: 5px 0;
+}
+
+h3 {
+    color: rgb(255, 208, 0);
+    margin-bottom: 0;
+}
+
+p, h2 {
     color: white;
 }
 
@@ -39,15 +48,30 @@ button {
     border: none;
     border-radius: 10px;
     padding: 20px;
+    border: 2px solid white;
 }
 
-
-ul {
-    display: flex;
-    justify-content: space-between;
+.choices {
+    margin-top: 10px;
 }
 
-li {
+.matchScore  {
     display: flex;
-    margin: 0 10px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.scores {
+    display: flex;
+    gap: 25px;
+    margin: 20px 10px;
+}
+
+button:hover {
+    border: 2px solid rgb(255, 208, 0);
+}
+
+#winner {
+    margin-top: 30px;
 }

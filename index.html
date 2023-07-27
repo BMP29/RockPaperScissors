@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="./script.js"></script>
+    <script src="./script.js" defer></script>
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
@@ -16,25 +16,26 @@
     <div class="content">
         <h2>Choose a tool</h2>
 
-        <ul>
-            <li>
+        <div class="matchScore">
+            <h3>Match Score</h3>
+
+            <div class="scores">
                 <p>Player: </p>
-                <p id="playerScore"></p>
-            </li>
-            
-            <li>
+                <p id="playerScoreMatch"></p>
+
                 <p>Computer: </p>
-                <p id="computerScore"></p>
-            </li>
-        </ul>
+                <p id="computerScoreMatch"></p>
+            </div>
+        </div>
 
         <div class="choices">
-            <button onclick="game('ROCK')">✊</button>
-            <button onclick="game('Paper')">🤚</button>
-            <button onclick="game('Scissors')">✌️</button>
+            <button id="rock">✊</button>
+            <button id="paper">🤚</button>
+            <button id="scissors">✌️</button>
         </div>
 
         <p id="winner"></p>
+
     </div>
     
 </body>

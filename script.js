@@ -1,9 +1,14 @@
-let computerCount, playerCount;
-computerCount = playerCount = 0;
-
 let computerScore, playerScore;
 computerScore = playerScore = 0;
 
+const buttons = document.querySelectorAll('button');
+
+buttons.forEach((button) => {
+    button.addEventListener('click', () => {
+        playRound(button.id, getComputerChoice());
+    });
+  });
+    
 function getComputerChoice() {
     let min = 1;
     let max = 4;
@@ -29,46 +34,46 @@ function getComputerChoice() {
     }
 }
 
+function checkWinner() {
+    if(playerScore === 5 || computerScore === 5)
+    {
+        const paraWinner = document.querySelector('#winner');
+        const winner = (playerScore > computerScore) ? 'Player' : 'Computer';
+        paraWinner.textContent = "The winner of the match is: The " + winner;
+        playerScore = computerScore = 0;
+
+        const paraPlayerScore = document.querySelector('#playerScoreMatch');
+        paraPlayerScore.textContent = 0;
+        const paraComputerScore = document.querySelector('#computerScoreMatch');
+        paraComputerScore.textContent = 0;
+
+        paraWinner.style.color = 'rgb(255, 208, 0)';
+    }
+}
+
 function playRound(playerSelection, computerSelection) {
     playerSelection = playerSelection.toUpperCase();
+    const paraWinner = document.querySelector('#winner');
+    paraWinner.style.color = 'white';
+
+    let result;
 
     if(playerSelection === computerSelection){
-        return "Tie";
+        const paraWinner = document.querySelector('#winner');
+        paraWinner.textContent = "Tie: " + playerSelection + " VS " + computerSelection; 
     } else if
     (  playerSelection === "ROCK" && computerSelection === "SCISSORS" 
     || playerSelection === "PAPER" && computerSelection === "ROCK"
     || playerSelection === "SCISSORS" && computerSelection === "PAPER") {
-        return "Player";
+        const paraWinner = document.querySelector('#winner');
+        paraWinner.textContent = "Player won the round!";
+        const paraPlayerScore = document.querySelector('#playerScoreMatch');
+        paraPlayerScore.textContent = ++playerScore;
     }else {
-        return "Computer";
+        const paraWinner = document.querySelector('#winner');
+        paraWinner.textContent = "Computer won the round!";
+        const paraComputerScore = document.querySelector('#computerScoreMatch');
+        paraComputerScore.textContent = ++computerScore;
     }
-}
-
-function game(choice) {
-    let winner = playRound(choice, getComputerChoice());
-    console.log(winner);
-
-    if (winner != "Tie") winner === "Player" ? playerCount++ : computerCount++;
-
-    if(winner === "Player") {
-        document.getElementById("winner").innerHTML = "You Won the round!";
-    } else if(winner === "Computer") {
-        document.getElementById("winner").innerHTML = "Computer Won the round!";
-    }
-
-
-    console.log("Computer: " + computerCount + " You: " + playerCount);
-
-    if(playerCount === 5) 
-    {
-        alert("You Won!");
-        computerCount = playerCount = 0;
-        playerScore++;
-        document.getElementById("playerScore").innerHTML = playerScore.toString();
-    }else if (computerCount === 5){
-        alert("Computer Won! You Losed!");
-        computerCount = playerCount = 0;
-        computerScore++;
-        document.getElementById("computerScore").innerHTML = computerScore.toString();
-    } 
+        checkWinner();
 }
